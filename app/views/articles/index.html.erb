@@ -4,11 +4,18 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Articles</h1>
-    <%= link_to "New article", new_article_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+
+  <%= form_with(url: articles_path, method: :get, data: { turbo_frame: "articles"}) do |form| %>
+    <div class="flex space-x-3">
+    <%= form.text_field :query, class:"px-2 py-3 border ring-0 rounded", placeholder: "Search articles..."%>
+
+    <%= form.submit "Search", class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    </div>
+  <% end %>
+  
+  </div>
+  <div class="my-16">
+  <%= render "articles", articles: @articles %>
   </div>
 
-  <div id="articles" class="min-w-full">
-    <%= render @articles %>
-  </div>
 </div>
