@@ -82,5 +82,6 @@ test:
 production:
   <<: *default
   database: search_analytics_production
+  adapter: postgresql
   username: search_analytics
   password: <%= ENV["SEARCH_ANALYTICS_DATABASE_PASSWORD"] %>
