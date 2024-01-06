@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root "articles#index"
+  root 'articles#index'
   resources :analytics, only: [:index]
-  resources :articles, only: [:index, :create, :new, :destroy]
-  
+  resources :articles, only: %i[index create new destroy]
 end

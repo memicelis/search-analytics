@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
 
   def index
     @articles = if params[:query].present?
-                  Article.where("title ILIKE ?", "%#{params[:query].split(' ').join('%')}%")
+                  Article.where('title ILIKE ?', "%#{params[:query].split(' ').join('%')}%")
                 else
                   Article.all
                 end
@@ -40,7 +42,4 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title)
   end
-end 
-  
-  
-
+end
